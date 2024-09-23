@@ -1,0 +1,38 @@
+﻿<Application x:Class="PIMTool.Client.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:page="clr-namespace:PIMTool.Client.Views.Pages"
+             xmlns:control="clr-namespace:PIMTool.Client.Views.Controls"
+             xmlns:viewModel="clr-namespace:PIMTool.Client.ViewModels"
+             xmlns:local="clr-namespace:PIMTool.Client">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Languages/fr-FR.xaml"/>
+                <ResourceDictionary Source="/Resources/Languages/en-US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--Data templates for displaying content on main window-->
+            <DataTemplate DataType="{x:Type TypeName=viewModel:CreateProjectViewModel}">
+                <page:CreateProjectPage />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type TypeName=viewModel:ProjectListViewModel}">
+                <page:ProjectListPage />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type TypeName=viewModel:AppHeaderViewModel}">
+                <control:AppHeader />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type TypeName=viewModel:AppSidebarViewModel}">
+                <control:AppSidebar />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type TypeName=viewModel:ErrorPageViewModel}">
+                <page:ErrorPage />
+            </DataTemplate>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PIMTool.Api", "PIMTool.Api\PIMTool.Api.csproj", "{F0148639-BD7D-47D0-A006-3ECCB76DF465}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PIMTool.Core", "PIMTool.Core\PIMTool.Core.csproj", "{E08462D8-29AD-4E06-B8C8-843CECF190D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PIMTool.Client", "PIMTool.Client\PIMTool.Client.csproj", "{CDD80261-ACA3-488B-A28E-F02DA69A3443}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PIMTool.Tests", "PIMTool.Test\PIMTool.Tests.csproj", "{1DE2772D-C1D5-46EC-A068-4764CA2DDEFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9604B79-3689-4C32-92D2-13D380E68BFE}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0148639-BD7D-47D0-A006-3ECCB76DF465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0148639-BD7D-47D0-A006-3ECCB76DF465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0148639-BD7D-47D0-A006-3ECCB76DF465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0148639-BD7D-47D0-A006-3ECCB76DF465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E08462D8-29AD-4E06-B8C8-843CECF190D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E08462D8-29AD-4E06-B8C8-843CECF190D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E08462D8-29AD-4E06-B8C8-843CECF190D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E08462D8-29AD-4E06-B8C8-843CECF190D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD80261-ACA3-488B-A28E-F02DA69A3443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD80261-ACA3-488B-A28E-F02DA69A3443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD80261-ACA3-488B-A28E-F02DA69A3443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD80261-ACA3-488B-A28E-F02DA69A3443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE2772D-C1D5-46EC-A068-4764CA2DDEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE2772D-C1D5-46EC-A068-4764CA2DDEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE2772D-C1D5-46EC-A068-4764CA2DDEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE2772D-C1D5-46EC-A068-4764CA2DDEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DADC386-58BA-4EBC-A258-4E258A11FCFE}
+	EndGlobalSection
+EndGlobal

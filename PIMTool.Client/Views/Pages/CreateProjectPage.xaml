@@ -1,0 +1,161 @@
+﻿<Page x:Class="PIMTool.Client.Views.Pages.CreateProjectPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PIMTool.Client.Views.Pages"
+      xmlns:validation="clr-namespace:PIMTool.Client.ValidationRules"
+      xmlns:converter="clr-namespace:PIMTool.Client.Converters"
+      xmlns:ext="clr-namespace:PIMTool.Client.Extensions"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Unloaded="Page_Unloaded"
+      Title="CreateProjectPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/CreateProjectPageStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <StackPanel Margin="40,40,0,20">
+        <Label Name="titleCreateOrEdit" Content="{Binding IsEditing, Converter={StaticResource TitleConverter}}" FontSize="20" FontWeight="SemiBold" Opacity="0.5" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="LightGray" Padding="20,45,0,45" Margin="0,10,0,0">
+                <StackPanel>
+                    <Border CornerRadius="5" Background="LightPink"
+                            Margin="-20,-40,0,40" Padding="10,2.5" 
+                            Visibility="{Binding ShowGeneralErrorText, Converter={StaticResource ErrorStatusToVisibility}}">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="{DynamicResource General_Error_Text}" 
+                                   Style="{StaticResource GeneralErrorText}"
+                                   Grid.Column="0" />
+                            <TextBlock Text="✖" 
+                                       ext:TextBlockExtensions.Command="{Binding HideGeneralErrorTextCommand}"
+                                       HorizontalAlignment="Right" Foreground="Gray" 
+                                       FontWeight="Normal" FontSize="8" 
+                                       VerticalAlignment="Center" Grid.Column="1" />
+                        </Grid>
+                    </Border>
+
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+
+                        <Label Content="{DynamicResource Project_Number}" Grid.Column="0" Grid.Row="0" Template="{StaticResource RequiredLabel}" />
+                        <TextBox Text="{Binding ProjectNumber, Converter={StaticResource ProjectNumberConverter}, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                 IsReadOnly="{Binding IsEditing}"
+                                 Style="{StaticResource CustomTextBox}" Name="ProjectNumberTextBox" Grid.Column="1" Grid.Row="0"
+                                 PreviewTextInput="TextBox_PreviewTextInput"
+                                 DataObject.Pasting="TextBox_Pasting"
+                                 MaxLength="4" />
+
+                        <Label Content="{DynamicResource Project_Name}" Grid.Column="0" Grid.Row="2" Template="{StaticResource RequiredLabel}" />
+                        <TextBox Text="{Binding ProjectName, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                 Style="{StaticResource CustomTextBox}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3"
+                                 MaxLength="50" />
+
+                        <Label Content="{DynamicResource Customer}" Grid.Column="0" Grid.Row="4" Template="{StaticResource RequiredLabel}" />
+                        <TextBox Text="{Binding Customer, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                 Style="{StaticResource CustomTextBox}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4"
+                                 MaxLength="50" />
+
+                        <Label Content="{DynamicResource Group}" Grid.Column="0" Grid.Row="6" Template="{StaticResource RequiredLabel}" />
+                        <ComboBox SelectedItem="{Binding Group, UpdateSourceTrigger=Default, ValidatesOnDataErrors=True}"
+                                  Style="{StaticResource CustomComboBox}"
+                                  ItemsSource="{Binding Groups}"
+                                  Grid.Column="1" Grid.Row="6">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource GroupConverter}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Label Content="{DynamicResource Members}" Grid.Column="0" Grid.Row="8" Style="{StaticResource CreateProjectLabel}" />
+                        <TextBox Text="{Binding Members, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                 Name="membersTextBox"
+                                 Style="{StaticResource MembersTextBox}" 
+                                 Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="8" 
+                                 VerticalAlignment="Center" Height="30" />
+                        <TextBox Text="{Binding MembersError}" Name="memberErrorContainer" Visibility="Collapsed" TextChanged="MemberErrorContainer_TextChange" />
+
+                        <Label Content="{DynamicResource Status}" Grid.Column="0" Grid.Row="10" Template="{StaticResource RequiredLabel}" />
+                        <ComboBox SelectedItem="{Binding Status, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                  Name="projectStatuses"
+                                  Style="{StaticResource CustomComboBox}"
+                                  ItemsSource="{Binding Statuses}"
+                                  Grid.Column="1" Grid.Row="10">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource ProjectStatusConverter}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Label Content="{DynamicResource Start_date}" Grid.Column="0" Grid.Row="12" Template="{StaticResource RequiredLabel}" />
+                        <DatePicker SelectedDate="{Binding StartDate, ValidatesOnDataErrors=True}"
+                                    Style="{StaticResource CustomDatePicker}" 
+                                    Grid.Column="1" Grid.Row="12" 
+                                    VerticalAlignment="Center" Height="30" />
+
+                        <Label Content="{DynamicResource End_date}" Grid.Column="2" Grid.Row="12" HorizontalAlignment="Right" Margin="0,0,20,0" Style="{StaticResource CreateProjectLabel}" />
+                        <DatePicker SelectedDate="{Binding EndDate, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                    Style="{StaticResource CustomDatePicker}" 
+                                    Grid.Column="3" Grid.Row="12" 
+                                    VerticalAlignment="Center" Height="30" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,35,0,0">
+                <Button Content="{DynamicResource Cancel}" Style="{StaticResource CustomButton}" 
+                        Command="{Binding CancelCommand}"
+                        Background="WhiteSmoke" />
+                        
+                <Button Content="{Binding IsEditing, Converter={StaticResource ButtonTextConverter}}" Style="{StaticResource CustomButton}" 
+                        Command="{Binding CreateOrUpdateProjectCommand}"
+                        Name="buttonCreateOrEdit"
+                        Background="#2F85FA"
+                        Foreground="WhiteSmoke"
+                        Margin="40,0,0,0" />
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+
+</Page> 

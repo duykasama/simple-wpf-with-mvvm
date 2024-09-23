@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!--Header-->
+    <system:String x:Key="Help">Help</system:String>
+    <system:String x:Key="Log_Out">Log out</system:String>
+
+    <!--Sidebar-->
+    <system:String x:Key="Project_List">Projects list</system:String>
+    <system:String x:Key="New">New</system:String>
+    <system:String x:Key="Project">Project</system:String>
+    <system:String x:Key="Customer">Customer</system:String>
+    <system:String x:Key="Supplier">Supplier</system:String>
+
+    <!--Create project page-->
+    <system:String x:Key="New_Project">New Project</system:String>
+    <system:String x:Key="Edit_Project">Edit Project Information</system:String>
+    <system:String x:Key="Project_Number">Project Number</system:String>
+    <system:String x:Key="Project_Name">Project name</system:String>
+    <system:String x:Key="Group">Group</system:String>
+    <system:String x:Key="Members">Members</system:String>
+    <system:String x:Key="Status">Status</system:String>
+    <system:String x:Key="Start_date">Start date</system:String>
+    <system:String x:Key="End_date">End date</system:String>
+    <system:String x:Key="Cancel">Cancel</system:String>
+    <system:String x:Key="Create_Project">Create Project</system:String>
+    <system:String x:Key="Edit_Project_Button">Edit Project</system:String>
+    <system:String x:Key="General_Error_Text">Please enter all the mandatory fields (*)</system:String>
+    <system:String x:Key="Required_Project_Number">Project Number is required</system:String>
+    <system:String x:Key="Required_Project_Name">Project name is required</system:String>
+    <system:String x:Key="Required_Customer">Customer is required</system:String>
+    <system:String x:Key="Required_Group">Group is required</system:String>
+    <system:String x:Key="Members_Not_Found_0">The following visas do not exist: </system:String>
+    <system:String x:Key="Members_Not_Found_1"> do not exist</system:String>
+    <system:String x:Key="Required_Status">Status is required</system:String>
+    <system:String x:Key="Required_Start_Date">Start date is required</system:String>
+    <system:String x:Key="Invalid_End_Date">End date must be after start date</system:String>
+    <system:String x:Key="Project_Not_Found">Project with id {0} does not exist or has been deleted</system:String>
+    <system:String x:Key="Duplicated_Project_Number">Project number already existed. Please select a different project number</system:String>
+    <system:String x:Key="Project_Number_Out_Of_Range">Value of project number must be between 1 and 9999</system:String>
+    <system:String x:Key="Project_Name_Too_Long">Project name must be less than 50 characters</system:String>
+    <system:String x:Key="Customer_Name_Too_Long">Customer field must be less than 50 characters</system:String>
+    <system:String x:Key="Wrong_Members_Format">Members field's format should be 'ABC,BCD,EFG'</system:String>
+
+    <!--Search bar-->
+    <system:String x:Key="Search_Project">Search Project</system:String>
+    <system:String x:Key="Reset_Search">Reset Search</system:String>
+    <system:String x:Key="Searchbox_Placeholder">Project number, name, customer name</system:String>
+
+    <!--Project table-->
+    <system:String x:Key="Number">Number</system:String>
+    <system:String x:Key="Name">Name</system:String>
+    <system:String x:Key="Start_Date">Start Date</system:String>
+    <system:String x:Key="Delete">Delete</system:String>
+    <system:String x:Key="Items_Selected">items selected</system:String>
+    <system:String x:Key="Delete_Items">delete selected items</system:String>
+    <system:String x:Key="Delete_New_Project_Error">Non-new project can not be deleted</system:String>
+    <system:String x:Key="Error">Error</system:String>
+    <system:String x:Key="Warning">Warning</system:String>
+    <system:String x:Key="Delete_Confirmation">Are you sure to delete this project?</system:String>
+    <system:String x:Key="Delete_Multiple_Confirmation">Are you sure to delete selected projects?</system:String>
+
+    <!--Error page-->
+    <system:String x:Key="Error_Occurred">Unexpected error occurred.</system:String>
+    <system:String x:Key="Please">Please </system:String>
+    <system:String x:Key="Contact_Admin">contact your administrator</system:String>
+    <system:String x:Key="Or">or </system:String>
+    <system:String x:Key="Back_To_Search">back to search project</system:String>
+
+    <!--Project status-->
+    <system:String x:Key="Planned">Planned</system:String>
+    <system:String x:Key="In_Progress">In Progress</system:String>
+    <system:String x:Key="Finished">Finished</system:String>
+
+</ResourceDictionary>

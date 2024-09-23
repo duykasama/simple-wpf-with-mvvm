@@ -1,0 +1,342 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:converter="clr-namespace:PIMTool.Client.Converters">
+
+    <converter:CreateProjectErrorStatusToVisibilityConverter x:Key="ErrorStatusToVisibility" />
+    <converter:ExtraDataConverter x:Key="ExtraDataConverter" />
+    <converter:CreateProjectGroupConverter x:Key="GroupConverter" />
+    <converter:CreateProjectProjectStatusConverter x:Key="ProjectStatusConverter" />
+    <converter:CreateProjectProjectNumberConverter x:Key="ProjectNumberConverter" />
+    <converter:CreateOrUpdateProjectTitleConverter x:Key="TitleConverter" />
+    <converter:CreateOrUpdateProjectButtonTextConverter x:Key="ButtonTextConverter" />
+    <converter:LocalizedMessageConverter x:Key="MessageConverter" />
+    <converter:CreateProjectMembersNotFoundMessageConverter x:Key="MembersNotFoundMessageConverter" />
+    <converter:CreateProjectMembersNotFoundMessageToFontWeightConverter x:Key="MembersNotFoundMessageToFontWeightConverter" />
+    <converter:DateConverter x:Key="DateConverter" />
+
+    <Geometry x:Key="CalendarSvg">M 0 -2.25 C 0 -3.75 0.75 -4.5 2.25 -4.5 C 3.75 -4.5 4.5 -3.75 4.5 -2.25 L 12 -2.25 C 12 -3.75 12.75 -4.5 14.25 -4.5 C 15.75 -4.5 16.5 -3.75 16.5 -2.25 L 16.5 0 L 0 0 L 0 0 Z M 0 3 L 0 0.75 L 16.5 0.75 L 16.5 3 L 0 3 L 0 12 L 1.5 12 L 1.5 3 M 1.5 12 L 16.5 12 L 16.5 10.5 L 1.5 10.5 Z M 16.5 3 L 16.5 10.5 L 15 10.5 L 15 3 M 3 3 L 3 10.5 L 4.5 10.5 L 4.5 3 M 6 3 L 6 10.5 L 7.5 10.5 L 7.5 3 M 9 3 L 9 10.5 L 10.5 10.5 L 10.5 3 M 12 3 L 12 10.5 L 13.5 10.5 L 13.5 3 M 1.5 4.5 L 3 4.5 L 3 6 L 1.5 6 L 1.5 4.5 M 4.5 4.5 L 6 4.5 L 6 6 L 4.5 6 L 4.5 4.5 M 7.5 4.5 L 9 4.5 L 9 6 L 7.5 6 L 7.5 4.5 M 10.5 4.5 L 12 4.5 M 12 4.5 L 12 6 L 10.5 6 L 10.5 4.5 M 1.5 7.5 L 3 7.5 L 3 9 L 1.5 9 L 1.5 7.5 M 4.5 7.5 L 6 7.5 L 6 9 L 4.5 9 L 4.5 7.5 M 7.5 7.5 L 9 7.5 L 9 9 L 7.5 9 L 7.5 7.5 M 10.5 7.5 L 12 7.5 L 12 9 L 10.5 9 M 13.5 4.5 L 15 4.5 L 15 6 L 13.5 6 M 13.5 7.5 L 15 7.5 L 15 9 L 13.5 9</Geometry>
+    <Geometry x:Key="Arrow">M 0 0 L 0 0 M 5.6 11.2 L 11.2 22.4 L 16.8 11.2 L 5.6 11.2</Geometry>
+
+    <Style x:Key="CreateProjectLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="#666666" />
+    </Style>
+
+    <Style x:Key="CustomTextBox" TargetType="TextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Padding="5,0,0,0">
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right"
+                                   Text="{Binding ElementName=placeholder, Path= AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MessageConverter}}"
+                                   Foreground="Red"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   Margin="30,0,0,0"
+                                   ToolTip="{Binding ElementName=placeholder, Path= AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MessageConverter}}"/>
+                        <AdornedElementPlaceholder x:Name="placeholder" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="BorderBrush" Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MembersTextBox" TargetType="TextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Padding="5,0,0,0">
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right"
+                                   Foreground="Red"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   Margin="30,0,0,0"
+                                   MaxWidth="350"
+                                   TextTrimming="CharacterEllipsis"
+                                   ToolTip="{Binding ElementName=placeholder, Path= AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MessageConverter}}">
+                            <Run Text="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MembersNotFoundMessageConverter}, ConverterParameter=Members_Not_Found_0}" />
+                            <Run Text="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MembersNotFoundMessageConverter}}"
+                                 FontWeight="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MembersNotFoundMessageToFontWeightConverter}}" />
+                        </TextBlock>
+                        <AdornedElementPlaceholder x:Name="placeholder" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="BorderBrush" Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CustomToggleButtonForComboBox" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="Border"
+                            Background="Transparent"
+                            BorderBrush="LightGray"
+                            BorderThickness="0"
+                            CornerRadius="4"
+                            SnapsToDevicePixels="True">
+                        <Path x:Name="Arrow"
+                              Data="{StaticResource Arrow}"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Center"
+                              Margin="0,0,8,8"
+                              Fill="Gray" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="LightGray" />
+                            <Setter TargetName="Arrow" Property="Fill" Value="Gray" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="Gray" />
+                            <Setter TargetName="Arrow" Property="Fill" Value="DarkGray" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomComboBox" TargetType="ComboBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border x:Name="MainBorder"
+                                Background="White"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                            <Grid>
+                                <ToggleButton Name="ToggleButton" 
+                                              Style="{StaticResource CustomToggleButtonForComboBox}"
+                                              Grid.Column="2" 
+                                              Focusable="False"
+                                              IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" 
+                                              ClickMode="Press" />
+                                <ContentPresenter Name="ContentSite" 
+                                                  IsHitTestVisible="False" 
+                                                  Content="{TemplateBinding SelectionBoxItem}" 
+                                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
+                                                  Margin="5,0,0,0"
+                                                  TextBlock.FontSize="14"
+                                                  TextBlock.Foreground="#666666"
+                                                  TextBlock.FontWeight="SemiBold"
+                                                  VerticalAlignment="Center" 
+                                                  HorizontalAlignment="Left" />
+                            </Grid>
+                        </Border>
+                        <Popup Name="Popup" 
+                               Placement="Bottom" 
+                               IsOpen="{TemplateBinding IsDropDownOpen}" 
+                               AllowsTransparency="True"
+                               Focusable="False" 
+                               PopupAnimation="Slide">
+                            <Grid Name="DropDown" 
+                                      SnapsToDevicePixels="True" 
+                                      MinWidth="{TemplateBinding ActualWidth}" 
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border x:Name="DropDownBorder" 
+                                        Background="LightGray"
+                                        BorderThickness="1" 
+                                        CornerRadius="5"/>
+                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right"
+                                   Foreground="Red"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding ElementName=placeholder, Path= AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MessageConverter}}"
+                                   Margin="30,0,0,0"
+                                   ToolTip="{Binding ElementName=placeholder, Path= AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MessageConverter}}"/>
+                        <AdornedElementPlaceholder x:Name="placeholder" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="BorderBrush" Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CustomComboBoxItem" TargetType="ComboBoxItem">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Opacity" Value="0.8" />
+    </Style>
+    
+    <Style x:Key="CustomDatePicker" TargetType="DatePicker">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DatePicker">
+                    <Grid>
+                        <Border x:Name="MainBorder"
+                                BorderBrush="#C0C0C0"
+                                Background="White"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                            <Grid>
+                                <TextBlock Text="{Binding SelectedDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, Converter={StaticResource DateConverter}}" 
+                                           Foreground="#666666"
+                                           FontSize="14" FontWeight="SemiBold"
+                                           VerticalAlignment="Center"
+                                           Margin="3,0,0,0" Padding="5,0"
+
+                                           />
+                                <Button x:Name="PART_Button"
+                                        Width="20"
+                                        Margin="0,3,5,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Focusable="False"
+                                        Background="Transparent"
+                                        BorderThickness="0">
+                                    <Path Data="{StaticResource CalendarSvg}"
+                                          Fill="Gray"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                                </Button>
+                            </Grid>
+                        </Border>
+                        <Popup x:Name="PART_Popup"
+                               Placement="Bottom"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                               PopupAnimation="Slide">
+                            <Border Background="White"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="5">
+                                <Calendar x:Name="PART_Calendar" />
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter TargetName="MainBorder" Property="BorderBrush" Value="Red" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Bottom"
+                                   Foreground="Red"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MessageConverter}}"
+                                   Margin="0,12,0,0"
+                                   ToolTip="{Binding ElementName=placeholder, Path= AdornedElement.(Validation.Errors)[0].ErrorContent, Converter={StaticResource MessageConverter}}"/>
+                        <AdornedElementPlaceholder x:Name="placeholder" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="LightGray"
+                            BorderThickness="1"
+                            Background="{TemplateBinding Background}"
+                            Height="35"
+                            Width="130"
+                            Cursor="Hand"
+                            CornerRadius="4">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <ControlTemplate x:Key="RequiredLabel" TargetType="Label">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="{TemplateBinding Content}" Foreground="#666666" FontSize="14" FontWeight="SemiBold" />
+            <Label Content="*" Foreground="Red" FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+    </ControlTemplate>
+
+    <Style x:Key="GeneralErrorText" TargetType="Label">
+        <Setter Property="Foreground" Value="OrangeRed" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+</ResourceDictionary>

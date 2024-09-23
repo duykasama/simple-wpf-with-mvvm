@@ -1,0 +1,43 @@
+﻿<Page x:Class="PIMTool.Client.Views.Pages.ErrorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PIMTool.Client.Views.Pages"
+      xmlns:ext="clr-namespace:PIMTool.Client.Extensions"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ErrorPage">
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <Image Height="90" Width="90" Source="/Images/cross_red_circle.png" Opacity="0.75" />
+
+            <StackPanel VerticalAlignment="Center" Margin="30,0,0,0">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Foreground" Value="#333333" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <TextBlock Text="{DynamicResource Error_Occurred}" />
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{DynamicResource Please}" />
+                    <TextBlock Text=" " />
+                    <TextBlock Text="{DynamicResource Contact_Admin}" Foreground="OrangeRed" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource Or}" />
+                    <TextBlock Text=" " />
+                    <TextBlock Text="{DynamicResource Back_To_Search}"
+                               ext:TextBlockExtensions.Command="{Binding RedirectToSearchCommand}"
+                               Foreground="DodgerBlue"
+                               Cursor="Hand" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Page>

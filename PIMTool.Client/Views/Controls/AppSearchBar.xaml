@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="PIMTool.Client.Views.Controls.AppSearchBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PIMTool.Client.Views.Controls"
+             xmlns:converter="clr-namespace:PIMTool.Client.Converters"
+             xmlns:ext="clr-namespace:PIMTool.Client.Extensions"
+             mc:Ignorable="d" 
+             Unloaded="UserControl_Unloaded"
+             d:DesignHeight="450" d:DesignWidth="1000">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converter:CreateProjectProjectStatusConverter x:Key="ProjectStatusConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/CreateProjectPageStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/SearchBarStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <WrapPanel Orientation="Horizontal">
+        <TextBox Text="{Binding SearchKeyword}"
+                 VerticalContentAlignment="Center" Style="{StaticResource SearchTextBox}" 
+                 Margin="0,20,0,0"
+                 Width="400" />
+
+        <ComboBox SelectedItem="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding ProjectStatuses}"
+                  Name="projectStatuses"
+                  Style="{StaticResource CustomComboBox}" 
+                  Width="200" Margin="20,20,50,0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource ProjectStatusConverter}}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+            <Button Content="{DynamicResource Search_Project}" 
+                    Command="{Binding SearchProjectsCommand}"
+                    Style="{StaticResource CustomButton}" 
+                    Background="#2F85FA" Foreground="WhiteSmoke" />
+
+            <TextBlock Text="{DynamicResource Reset_Search}"
+                       ext:TextBlockExtensions.Command="{Binding ClearSearchCommand}"
+                       Margin="50,0,0,0"
+                       Foreground="DodgerBlue"
+                       Background="Transparent"
+                       FontWeight="SemiBold"
+                       Cursor="Hand"
+                       VerticalAlignment="Center" />
+        </StackPanel>
+    </WrapPanel>
+
+</UserControl>

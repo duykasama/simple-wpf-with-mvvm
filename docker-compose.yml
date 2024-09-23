@@ -1,0 +1,26 @@
+services:
+  database:
+    image: mcr.microsoft.com/mssql/server:latest
+    container_name: pimtool-database
+    networks:
+      - pimtool-network
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "1435:1433"
+
+  api:
+    image: server:latest
+    build:
+      context: .
+      dockerfile: ./PIMTool.Api/Dockerfile
+    container_name: pimtool-api
+    networks:
+      - pimtool-network
+    restart: on-failure
+    ports:
+      - "10000:8080"
+
+networks:
+  pimtool-network:

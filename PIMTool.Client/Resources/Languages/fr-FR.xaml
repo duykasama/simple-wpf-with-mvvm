@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!--Header-->
+    <system:String x:Key="Help">Aide</system:String>
+    <system:String x:Key="Log_Out">Se déconnecter</system:String>
+
+    <!--Sidebar-->
+    <system:String x:Key="Project_List">Liste des projets</system:String>
+    <system:String x:Key="New">Nouveau</system:String>
+    <system:String x:Key="Project">Projet</system:String>
+    <system:String x:Key="Customer">Client</system:String>
+    <system:String x:Key="Supplier">Fournisseur</system:String>
+
+    <!--Create project page-->
+    <system:String x:Key="New_Project">Nouveau projet</system:String>
+    <system:String x:Key="Edit_Project">Modifier les informations du projet</system:String>
+    <system:String x:Key="Project_Number">Numéro de projet</system:String>
+    <system:String x:Key="Project_Name">Nom du projet</system:String>
+    <system:String x:Key="Group">Groupe</system:String>
+    <system:String x:Key="Members">Membres</system:String>
+    <system:String x:Key="Status">Statut</system:String>
+    <system:String x:Key="Start_date">Date de début</system:String>
+    <system:String x:Key="End_date">Date de fin</system:String>
+    <system:String x:Key="Cancel">Annuler</system:String>
+    <system:String x:Key="Create_Project">Créer un projet</system:String>
+    <system:String x:Key="Edit_Project_Button">Modifier le projet</system:String>
+    <system:String x:Key="General_Error_Text">Veuillez saisir tous les champs obligatoires (*)</system:String>
+    <system:String x:Key="Required_Project_Number">Le numéro de projet est requis</system:String>
+    <system:String x:Key="Required_Project_Name">Le nom du projet est obligatoire</system:String>
+    <system:String x:Key="Required_Customer">Le client est requis</system:String>
+    <system:String x:Key="Required_Group">Le groupe est requis</system:String>
+    <system:String x:Key="Members_Not_Found_0">Les visas suivants n'existent pas: </system:String>
+    <system:String x:Key="Members_Not_Found_1"> n'existe pas</system:String>
+    <system:String x:Key="Required_Status">Le statut est requis</system:String>
+    <system:String x:Key="Required_Start_Date">La date de début est obligatoire</system:String>
+    <system:String x:Key="Invalid_End_Date">La date de fin doit être postérieure à la date de début</system:String>
+    <system:String x:Key="Project_Not_Found">Le projet avec l'ID {0} n'existe pas ou a été supprimé</system:String>
+    <system:String x:Key="Duplicated_Project_Number">Le numéro de projet existe déjà. Veuillez sélectionner un autre numéro de projet</system:String>
+    <system:String x:Key="Project_Number_Out_Of_Range">La valeur du numéro de projet doit être comprise entre 1 et 9999</system:String>
+    <system:String x:Key="Project_Name_Too_Long">Le nom du projet doit comporter moins de 50 caractères</system:String>
+    <system:String x:Key="Customer_Name_Too_Long">Le champ client doit contenir moins de 50 caractères</system:String>
+    <system:String x:Key="Wrong_Members_Format">Le format du champ Membres doit être « ABC, BCD, EFG »</system:String>
+
+    <!--Search bar-->
+    <system:String x:Key="Search_Project">Recherche</system:String>
+    <system:String x:Key="Reset_Search">Réinitialiser la recherche</system:String>
+    <system:String x:Key="Searchbox_Placeholder">Numéro de projet, nom, nom du client</system:String>
+
+    <!--Project table-->
+    <system:String x:Key="Number">Nombre</system:String>
+    <system:String x:Key="Name">Nom</system:String>
+    <system:String x:Key="Start_Date">Date début</system:String>
+    <system:String x:Key="Delete">Suppri</system:String>
+    <system:String x:Key="Items_Selected">éléments sélectionnés</system:String>
+    <system:String x:Key="Delete_Items">supprimer les éléments sélectionnés</system:String>
+    <system:String x:Key="Delete_New_Project_Error">Un projet non nouveau ne peut pas être supprimé</system:String>
+    <system:String x:Key="Error">Erreur</system:String>
+    <system:String x:Key="Warning">Avertissement</system:String>
+    <system:String x:Key="Delete_Confirmation">Etes-vous sûr de supprimer ce projet ?</system:String>
+    <system:String x:Key="Delete_Multiple_Confirmation">Etes-vous sûr de supprimer ce projet ?</system:String>
+
+    <!--Error page-->
+    <system:String x:Key="Error_Occurred">Une erreur inattendue s'est produite.</system:String>
+    <system:String x:Key="Please">S'il te plaît </system:String>
+    <system:String x:Key="Contact_Admin">contactez votre administrateur</system:String>
+    <system:String x:Key="Or">ou </system:String>
+    <system:String x:Key="Back_To_Search">retour au projet de recherche</system:String>
+
+    <!--Project status-->
+    <system:String x:Key="Planned">Prévue</system:String>
+    <system:String x:Key="In_Progress">En cours</system:String>
+    <system:String x:Key="Finished">Finie</system:String>
+
+</ResourceDictionary>

@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="LangText" TargetType="TextBlock">
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="FontSize" Value="12pt" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+
+    <Style x:Key="LangPanel" TargetType="WrapPanel">
+        <Setter Property="Margin" Value="25,10" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="FunctionPanel" TargetType="WrapPanel">
+        <Setter Property="Height" Value="Auto" />
+    </Style>
+
+    <Style x:Key="FunctionTextBlock" TargetType="TextBlock">
+        <Setter Property="Margin" Value="20,0,0,0" />
+        <Setter Property="FontSize" Value="12pt" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+
+</ResourceDictionary>
